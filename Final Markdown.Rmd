@@ -16,9 +16,6 @@ The Asteroid data is officially maintained by Jet Propulsion Laboratory of Calif
 2) Studying composition of such objects might lead in exploiting raw-materials beneficial to our planet. 
 
 xx - add on classification - xx
-```{r cars}
-summary(cars)
-```
 **Related**  **work:**
 
 
@@ -39,28 +36,56 @@ Preprocessing
 The first step in the preprocessing is to fix the target variable column - diameter. “diameter”  in the original dataset is a column of type character. A simple type transformation was used to change it to type numeric. 
 
 
-<photo of transformation>
-
+```{r eval=FALSE}
+#convert diameter to numeric
+df$diameter <- as.numeric(as.character(df$diameter))
+```
 
 The next step was to treat the null values in the target variable column. Out of 800000 entries, there were 650000 null values which were removed. Filling them with either the mean or the median was considered but since that would lead to an inaccurate distribution, these options were not taken and the null entries were removed. 
 
-<photo to remove nulls>
 
 
-The remaining columns were then checked.
+```{r eval=FALSE}
+#drop na's in diameter column
+df_diameter_nadrop <- subset(df, !is.na(df$diameter))
+```
 
-<photo os sapply)
 
-From the columns still containing null values, the columns containing more than 50% null value entries were dropped from the dataset. This left the columns <,,,> that stll contained a certain amount of nulls. These null values in these columns were replaced with the means of the respective columns. 
 
-As a final step, the columns “condition_code” and “data_arc” were changed to type numeric.
+The remaining columns were then checked.From the columns still containing null values, the columns containing more than 50% null value entries were dropped from the dataset. 
 
+```{r eval=FALSE}
+## Remove columns with more than 50% NA
+df_diameter_nadrop <- df_diameter_nadrop[, which(colMeans(!is.na(df_diameter_nadrop)) > 0.5)]
+sapply(df_diameter_nadrop, function(x) sum(is.na(x))/length(x[1]))
+```
+
+
+This left the columns data_arc, albedo, H that still contained a certain amount of nulls.
+![an image caption Source: Ultimate Funny Dog Videos Compilation 2013.](Resources/Preprocessing-Count-Nulls.jpeg)
+
+These null values in these columns were replaced with the means of the respective columns. 
+
+```{r eval=FALSE}
+#fill data_arc, H, albedo with mean of their respective columns
+cols <- c("data_arc","albedo","H") 
+df_diameter_nadrop[cols] <-  replace_na(df_diameter_nadrop[cols],as.list(colMeans(df_diameter_nadrop[cols],na.rm=T)))
+```
+
+The columns “condition_code” and “data_arc” were changed to type numeric. In addition, bijections in the dataset were removed. One hot encoding on the columns “pha” and “neo” was done in order to convert these categorical columns to numerical ones. The final dataset consists of 137636 x 9 dimensions (the columns being a, data_arc, condition_code, h, albedo, moid, neo, pha, diameter).
 
 **Exploratory data analysis:**
 
-o	What visualizations did you use to look at your data in different ways?
+For exploratory analysis, histograms and correlation plots were plotted to understand the distribution of data in the variables and the correlation between the variables. The histograms and correlation matrix are as shown below.
 
-o	What are the different machine learning methods you considered?
+![an image caption Source: Ultimate Funny Dog Videos Compilation 2013.](Resources/EDA-Histograms.jpg)
+
+
+![an image caption Source: Ultimate Funny Dog Videos Compilation 2013.](Resources/EDA-CorrelationMatrices.jpg)
+
+
+
+The variables name, extent, X, spec_B, spec_T, class, n_obs_used were dropped before beginning the modelling process.
 
 To predict the diameter of asteroids, the following models will be tested to see which performs the best:
 

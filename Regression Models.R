@@ -19,7 +19,7 @@ require(caTools)
 
 set.seed(999) 
 
-directory <- "C:/Users/user/Desktop/Ovgu Educational/Data Science with R/Repo"
+directory <- "C:/Users/user/Documents/GitHub/Data-Science-With-R"
 fileName <- "Asteroid_Diameter_Preprocessed.csv"
 filePath <- file.path(directory, fileName)
 
