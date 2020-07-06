@@ -1,0 +1,124 @@
+---
+title: "Asteroid diameter prediction and hazardness classification using NASA dataset"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Background**  **and**  **Motivation:**
+
+The Asteroid data is officially maintained by Jet Propulsion Laboratory of California Institute of Technology, USA which is an organization under NASA. Asteroids are small rocky bodies primarily in orbit between Jupiter and Mars (i.e. main-belt). The diameter of the observed asteroids ranges from 948 km (1 Ceres) to a few meters. Near-Earth asteroids (NEAs) are a subset of asteroids whose orbits approach and/or cross the Earth's orbit. These asteroids have been known to collide with Earth in the past and have been the cause of modifying Earth’s biosphere greatly. It is particularly beneficial in predicting the size of the asteroid, because that would allow us to find those that are likely to collide with Earth. Our analysis might help in: 
+
+1) Early Warning system that monitors impacts. 
+
+2) Studying composition of such objects might lead in exploiting raw-materials beneficial to our planet. 
+
+xx - add on classification - xx
+```{r cars}
+summary(cars)
+```
+**Related**  **work:**
+
+
+**Research** **questions:**
+
+What questions are you trying to answer?
+
+How did these questions evolve over the course of the project?
+
+What new questions did you consider in the course of your analysis?
+
+**Data:**
+
+The overall recorded data set consists of the asteroid data of 839,736 asteroid types. This dataset is officially maintained by [Jet Propulsion Laboratory](https://ssd.jpl.nasa.gov/sbdb_query.cgi) of California Institute of Technology, USA which is an organization under NASA. The dataset can be downloaded from [Kaggle](https://www.kaggle.com/basu369victor/prediction-of-asteroid-diameter). The Datasets are in the form of .csv files, with few new entries and additional new columns in the updated asteroid csv sheet. The dimension of the dataset is 839,736 (observations) * 31 (attributes). The 31 columns are the basic and physical properties of asteroids.The only parameter determined for nearly all asteroids is the absolute magnitude (H) which can be used to obtain a very rough estimate of an asteroid's size. However, a few asteroids have other parameters determined including rotation period, geometric albedo, colors (B-V, U-B, I-R), spectral taxonomic type, mass (GM), and bulk density etc. 
+
+Preprocessing
+
+The first step in the preprocessing is to fix the target variable column - diameter. “diameter”  in the original dataset is a column of type character. A simple type transformation was used to change it to type numeric. 
+
+
+<photo of transformation>
+
+
+The next step was to treat the null values in the target variable column. Out of 800000 entries, there were 650000 null values which were removed. Filling them with either the mean or the median was considered but since that would lead to an inaccurate distribution, these options were not taken and the null entries were removed. 
+
+<photo to remove nulls>
+
+
+The remaining columns were then checked.
+
+<photo os sapply)
+
+From the columns still containing null values, the columns containing more than 50% null value entries were dropped from the dataset. This left the columns <,,,> that stll contained a certain amount of nulls. These null values in these columns were replaced with the means of the respective columns. 
+
+As a final step, the columns “condition_code” and “data_arc” were changed to type numeric.
+
+
+**Exploratory data analysis:**
+
+o	What visualizations did you use to look at your data in different ways?
+
+o	What are the different machine learning methods you considered?
+
+To predict the diameter of asteroids, the following models will be tested to see which performs the best:
+
+Linear Regression
+Decision Tree Regressor
+Random Forest Regressor
+SVM
+MLP - xxxx
+XGBoost
+
+o	Justify the decisions you made, and show any major changes to your ideas.
+
+https://www.investopedia.com/terms/r/r-squared.asp#:~:text=R%2Dsquared%20(R2),variables%20in%20a%20regression%20model.
+xx Check for plagiarism xx
+The initial idea was to use R-Squared metric to evaluate the models. The R-Squared metric estimates the correlation between dependent and independent variables but it does not indicate the performance of the model. A model can achieve the highest R-Squared score of 1 and still have a bad performance. As an alternative to R-Squared, MAE, MSE and RMSE metrics are used to evaluate the models. 
+
+o	How did you reach these conclusions?
+
+**Final analysis:**
+
+o	What did you learn about the data?
+
+o	How did you answer the questions?
+
+o	How can you justify your answers?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
