@@ -577,11 +577,11 @@ cm_rf <- confusionMatrix(factor(y_test$pha),factor(pred_rf))
 cm_xgb <- runXGBoostpha(df,indices)
 
 ####Run Classification Models with cross validation and Hyper Parameters####
-# cm_defaultXGBModelpha=defaultXGBModelpha(X_train, X_test,y_train, y_test)
-# cm_tuneXGBModelpha=tuneXGBModelpha(X_train, X_test,y_train, y_test)
-# cm_defaultRFModelpha=defaultRFModelpha(X_train, X_test,y_train, y_test)
-# cm_RandomSearchRFModelpha=RandomSearchRFModelpha(X_train, X_test,y_train, y_test)
-# cm_GridSearchRFModelpha=GridSearchRFModelpha(X_train, X_test,y_train, y_test)
+cm_defaultXGBModelpha=defaultXGBModelpha(X_train, X_test,y_train, y_test)
+cm_tuneXGBModelpha=tuneXGBModelpha(X_train, X_test,y_train, y_test)
+cm_defaultRFModelpha=defaultRFModelpha(X_train, X_test,y_train, y_test)
+cm_RandomSearchRFModelpha=RandomSearchRFModelpha(X_train, X_test,y_train, y_test)
+cm_GridSearchRFModelpha=GridSearchRFModelpha(X_train, X_test,y_train, y_test)
 
 # #Export Classification Metrics
 # ExportMetrics(cm_lm,cm_rf,cm_xgb,cm_defaultRFModelpha,cm_RandomSearchRFModelpha,cm_GridSearchRFModelpha,cm_defaultXGBModelpha,cm_tuneXGBModelpha)

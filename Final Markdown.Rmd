@@ -87,11 +87,11 @@ For exploratory analysis, histograms and correlation plots were plotted to under
 
 The variables name, extent, X, spec_B, spec_T, class, n_obs_used were dropped before beginning the modelling process.
 
-**Modelling** **and** **Results** **Obtained:-**
+**Modelling and Results Obtained:-**
 
 The dataset was split into training and testing sets with a split ratio of 75%.
 
-For the **regression** problem of predicting the asteroid diameter, the following models were considered :
+**For the regression problem of predicting the asteroid diameter, the following models were considered : **
 
 Linear Regression
 Regression Tree
@@ -195,6 +195,33 @@ The overall scores obtained for all the models used in the classification task c
 ![Classification-Evaluation-Results.png](Resources/Classification-Evaluation-Results.png)
 
 
+
+|        | Sensitivity | Specificity | Pos Pred Value | Neg Pred Value | Prevalence | Detection Rate | Detection Prevalence | Balanced Accuracy |
+|--------|-------------|-------------|----------------|----------------|------------|----------------|----------------------|-------------------|
+| CM_LM  | 0.9999      | 0.8889      | 0.9998         | 0.9091         | 0.9984     | 0.9982         | 0.9984               | 0.9444            |
+| CM_RF  | 0.9999      | 0.9881      | 1.0000         | 0.9432         | 0.9985     | 0.9984         | 0.9984               | 0.9940            |
+| CM_XGB | 1.0000      | 0.9589      | 0.9999         | 1.0000         | 0.9987     | 0.9987         | 0.9987               | 0.9795            |
+
+
+
+
+**Conclusion:**
+
+Amongst all the models tested against the dataset, it was found that for the task of predicting an asteroid’s diameter, an XGBoost model provided the best results with an RMSE score of ____ and an MAE value of ____. For the task of classifying whether an asteroid is physically hazardous or not, the Random Forest classification model with cross validation worked best, providing a Kappa score of ____ and a balanced accuracy of ____. This led to the conclusion that these models work best with astronomical data of the kind tackled in this project. 
+
+**Some interesting points that led to this conclusion are :**
+
+The variable “moid” seemed to have a very high importance in terms of deciding whether an asteroid is physically hazardous or not. This was confirmed by checking the correlation of “pha” and “moid” in the data itself.
+Fff
+Although the models returned good scores in terms of measures, the heavy class imbalance in the dataset is what led to abnormally high numbers in this case.
+
+
+**Future Refinements**
+
+Better data (more filled out and less nulls?)
+Better spread of target variable
+More modelling with cross validation
+
 o	Justify the decisions you made, and show any major changes to your ideas.
 
 https://www.investopedia.com/terms/r/r-squared.asp#:~:text=R%2Dsquared%20(R2),variables%20in%20a%20regression%20model.
@@ -210,39 +237,3 @@ o	What did you learn about the data?
 o	How did you answer the questions?
 
 o	How can you justify your answers?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
