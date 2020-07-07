@@ -62,7 +62,7 @@ sapply(df_diameter_nadrop, function(x) sum(is.na(x))/length(x[1]))
 
 
 This left the columns data_arc, albedo, H that still contained a certain amount of nulls.
-![an image caption Source: Ultimate Funny Dog Videos Compilation 2013.](Resources/Preprocessing-Count-Nulls.jpeg)
+![Preprocessing-Count-Nulls.jpeg](Resources/Preprocessing-Count-Nulls.jpeg)
 
 These null values in these columns were replaced with the means of the respective columns. 
 
@@ -78,23 +78,122 @@ The columns “condition_code” and “data_arc” were changed to type numeric
 
 For exploratory analysis, histograms and correlation plots were plotted to understand the distribution of data in the variables and the correlation between the variables. The histograms and correlation matrix are as shown below.
 
-![an image caption Source: Ultimate Funny Dog Videos Compilation 2013.](Resources/EDA-Histograms.jpg)
+![EDA-Histograms.jpg](Resources/EDA-Histograms.jpg)
 
 
-![an image caption Source: Ultimate Funny Dog Videos Compilation 2013.](Resources/EDA-CorrelationMatrices.jpg)
+![EDA-CorrelationMatrices.jpg](Resources/EDA-CorrelationMatrices.jpg)
 
 
 
 The variables name, extent, X, spec_B, spec_T, class, n_obs_used were dropped before beginning the modelling process.
 
-To predict the diameter of asteroids, the following models will be tested to see which performs the best:
+**Modelling** **and** **Results** **Obtained:-**
+
+The dataset was split into training and testing sets with a split ratio of 75%.
+
+For the **regression** problem of predicting the asteroid diameter, the following models were considered :
 
 Linear Regression
-Decision Tree Regressor
-Random Forest Regressor
+Regression Tree
 SVM
-MLP - xxxx
 XGBoost
+Random Forest
+
+Linear Regression:
+
+Linear regression was used with 10 fold cross validation.
+
+RMSE - 
+RMSE with cross validation - 
+MAE - 
+MAE with cross validation - 
+
+
+Regression Tree:
+
+Regression Tree was used with 10 fold cross validation. The tuneLength parameter was set to 10.
+
+
+RMSE - 
+RMSE with cross validation - 
+MAE - 
+MAE with cross validation - 
+
+SVM:
+
+RMSE - 
+MAE - 
+
+
+XGBoost:
+
+RMSE - 
+MAE 
+
+Random Forest:
+
+RMSE - 
+MAE - 
+
+The overall scores obtained for all the models used in the regression task can be seen below:
+![Regression-Evaluation-Results.png](Resources/Regression-Evaluation-Results.png)
+
+**For the classification problem of predicting whether an asteroid is physically hazardous or not using the ‘pha’ column, the following models were used:**
+
+
+Logistic Regression
+XGBoost
+Random Forest
+
+**Logistic Regression:**
+
+Parameters : family = “binomial”, remaining set as default
+
+<plot of variable importance>
+Kappa Scores - 0.9004
+Balanced Accuracy - 0.9637
+
+**XGBoost:**
+
+
+![Classification-VarImp-XGBoost.png](Resources/Classification-VarImp-XGBoost.png)
+
+Kappa Scores - 0.9830
+Kappa Scores(with cross validation) - 0.9886
+Kappa Score for TuneXGBoost (with cross validation) - 0.9886
+Balanced Accuracy - 0.9887
+Balanced Accuracy(with cross validation) - 0.9943
+Balanced Accuracy for TuneXGBoost (with cross validation) - 0.9943
+
+
+
+**Random Forest:**
+
+
+
+<plot of variable importance>
+
+![Classification-VarImp-Random-Forest.png](Resources/Classification-VarImp-Random-Forest.png)
+
+
+
+
+
+Kappa Scores - 0.9830
+Kappa Scores(with cross validation) - 0.9828
+Kappa Scores for RandomSearch(with cross validation) - 0.9943
+Kappa Scores for GridSearch(with cross validation) - 0.9943
+
+
+Balanced Accuracy - 0.9887
+Balanced Accuracy(with cross validation) - 0.9942
+Balanced Accuracy for RandomSearch(with cross validation) - 0.9943
+Balanced Accuracy for GridSearch(with cross validation) - 0.9943
+
+The overall scores obtained for all the models used in the classification task can be seen below:
+
+![Classification-Evaluation-Results.png](Resources/Classification-Evaluation-Results.png)
+
 
 o	Justify the decisions you made, and show any major changes to your ideas.
 

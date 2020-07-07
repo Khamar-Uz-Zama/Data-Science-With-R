@@ -544,10 +544,10 @@ indices <- sort(sample(nrow(df), nrow(df)*trainSize))
 train <- df[indices, ]
 test <- df[-indices, ]
 # Build X_train, y_train, X_test, y_test for diameter prediction
-X_train <- subset(train, select = -c(diameter))
-y_train <- subset(train, select = c(diameter))
-X_test <- subset(test, select = -c(diameter))
-y_test <- subset(test, select = c(diameter))
+# X_train <- subset(train, select = -c(diameter))
+# y_train <- subset(train, select = c(diameter))
+# X_test <- subset(test, select = -c(diameter))
+# y_test <- subset(test, select = c(diameter))
 
 ####Run Regression Models####
 # lm_errors <- runLinearModel(train, test)
@@ -558,23 +558,23 @@ y_test <- subset(test, select = c(diameter))
 # xgb_errors <-runXGBoostdia(df,indices)
 # rf_errors <-runRFdia(train, test)
 
-# Build X_train, y_train, X_test, y_test for diameter prediction
-# final <- df[!(is.na(df$pha)),]
-# final$pha <- factor(final$pha)
-# split <- sample.split(final$pha, SplitRatio = trainSize)
-# train <- subset(final, split == TRUE)
-# test <- subset(final, split == FALSE)
-# X_train <- subset(train, select = -c(pha))
-# y_train <- subset(train, select = c(pha))
-# X_test <- subset(test, select = -c(pha))
-# y_test <- subset(test, select = c(pha))
+# Build X_train, y_train, X_test, y_test for classification
+final <- df[!(is.na(df$pha)),]
+final$pha <- factor(final$pha)
+split <- sample.split(final$pha, SplitRatio = trainSize)
+train <- subset(final, split == TRUE)
+test <- subset(final, split == FALSE)
+X_train <- subset(train, select = -c(pha))
+y_train <- subset(train, select = c(pha))
+X_test <- subset(test, select = -c(pha))
+y_test <- subset(test, select = c(pha))
 
 ####Run Classification Models####
-# pred_lm=runLogisticModelpha(train, test,X_train, X_test,y_train, y_test)
-# cm_lm <- confusionMatrix(factor(y_test$pha),factor(pred_lm))
-# pred_rf=runrandomforestModelpha(train, test,X_train, X_test,y_train, y_test)
-# cm_rf <- confusionMatrix(factor(y_test$pha),factor(pred_rf))
-# cm_xgb <- runXGBoostpha(df,indices)
+pred_lm=runLogisticModelpha(train, test,X_train, X_test,y_train, y_test)
+cm_lm <- confusionMatrix(factor(y_test$pha),factor(pred_lm))
+pred_rf=runrandomforestModelpha(train, test,X_train, X_test,y_train, y_test)
+cm_rf <- confusionMatrix(factor(y_test$pha),factor(pred_rf))
+cm_xgb <- runXGBoostpha(df,indices)
 
 ####Run Classification Models with cross validation and Hyper Parameters####
 # cm_defaultXGBModelpha=defaultXGBModelpha(X_train, X_test,y_train, y_test)
