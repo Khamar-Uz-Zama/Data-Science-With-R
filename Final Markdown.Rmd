@@ -15,23 +15,35 @@ The Asteroid data is officially maintained by Jet Propulsion Laboratory of Calif
 
 2) Studying composition of such objects might lead in exploiting raw-materials beneficial to our planet. 
 
-xx - add on classification - xx
-**Related**  **work:**
+
+In addition to the regression task of predicting an asteroid´s diameter, the pha column is also being used for a classification task in order to determine which of these asteroids in the dataset are physically hazardous or not. 
 
 
 **Research** **questions:**
 
 What questions are you trying to answer?
 
-How did these questions evolve over the course of the project?
+1. Given an asteroid´s features or properties, which features can be used and are relevant to predict an asteroid´s diameter?
+
+2. For this kind of data and prediction task, which machine learning method performs the best?
+
+
 
 What new questions did you consider in the course of your analysis?
+
+1. Given an asteroid´s features or properties, what are the chances that it is a physically hazardous asteroid or not?
+
+2. Which classification algorithm works best for determining whether an asteroid is hazardous or not?
+
+3. How does the classifiers´ performance change when the number of labels is reduced (reducing the imbalance in the dataset)?
+
+4. Which hyperparameters yield the best results for this task?
 
 **Data:**
 
 The overall recorded data set consists of the asteroid data of 839,736 asteroid types. This dataset is officially maintained by [Jet Propulsion Laboratory](https://ssd.jpl.nasa.gov/sbdb_query.cgi) of California Institute of Technology, USA which is an organization under NASA. The dataset can be downloaded from [Kaggle](https://www.kaggle.com/basu369victor/prediction-of-asteroid-diameter). The Datasets are in the form of .csv files, with few new entries and additional new columns in the updated asteroid csv sheet. The dimension of the dataset is 839,736 (observations) * 31 (attributes). The 31 columns are the basic and physical properties of asteroids.The only parameter determined for nearly all asteroids is the absolute magnitude (H) which can be used to obtain a very rough estimate of an asteroid's size. However, a few asteroids have other parameters determined including rotation period, geometric albedo, colors (B-V, U-B, I-R), spectral taxonomic type, mass (GM), and bulk density etc. 
 
-Preprocessing
+**Preprocessing:**
 
 The first step in the preprocessing is to fix the target variable column - diameter. “diameter”  in the original dataset is a column of type character. A simple type transformation was used to change it to type numeric. 
 
@@ -74,125 +86,181 @@ df_diameter_nadrop[cols] <-  replace_na(df_diameter_nadrop[cols],as.list(colMean
 
 The columns “condition_code” and “data_arc” were changed to type numeric. In addition, bijections in the dataset were removed. One hot encoding on the columns “pha” and “neo” was done in order to convert these categorical columns to numerical ones. The final dataset consists of 137636 x 9 dimensions (the columns being a, data_arc, condition_code, h, albedo, moid, neo, pha, diameter).
 
-**Exploratory data analysis:**
+**Exploratory Data Analysis:**
 
 For exploratory analysis, histograms and correlation plots were plotted to understand the distribution of data in the variables and the correlation between the variables. The histograms and correlation matrix are as shown below.
 
-![EDA-Histograms.jpg](Resources/EDA-Histograms.jpg)
+<center>
+
+![Histograms showing variable distributions](Resources/EDA-Histograms.jpg)
+
+</center>
 
 
-![EDA-CorrelationMatrices.jpg](Resources/EDA-CorrelationMatrices.jpg)
+
+<center>
+
+![Correlation matrix](Resources/EDA-CorrelationMatrices.jpg)
+
+</center>
 
 
 
 The variables name, extent, X, spec_B, spec_T, class, n_obs_used were dropped before beginning the modelling process.
 
+
+
+
 **Modelling and Results Obtained:-**
 
-The dataset was split into training and testing sets with a split ratio of 75%.
+The dataset was split into training and testing sets with a split ratio of 60%.
 
-**For the regression problem of predicting the asteroid diameter, the following models were considered : **
+**Regression Task:**
 
-Linear Regression
-Regression Tree
-SVM
-XGBoost
-Random Forest
+For the regression problem of predicting the asteroid diameter, the following models were considered : 
 
-Linear Regression:
+1.Linear Regression
+
+2.Regression Tree
+
+3.SVM
+
+4.XGBoost
+
+5.Random Forest
+
+**1. Linear Regression:**
 
 Linear regression was used with 10 fold cross validation.
 
-RMSE - 
-RMSE with cross validation - 
-MAE - 
-MAE with cross validation - 
+RMSE - 6.01
+
+RMSE with cross validation - 6.01
+
+MAE - 2.51
+
+MAE with cross validation - 2.51
 
 
-Regression Tree:
+**2. Regression Tree:**
 
 Regression Tree was used with 10 fold cross validation. The tuneLength parameter was set to 10.
 
 
-RMSE - 
-RMSE with cross validation - 
-MAE - 
-MAE with cross validation - 
+RMSE - 5.32
 
-SVM:
+RMSE with cross validation - 5.39
 
-RMSE - 
-MAE - 
+MAE - 1.58
+
+MAE with cross validation - 1.6
+
+**3. SVM:**
+
+RMSE - 6.43
+
+MAE - 0.55
 
 
-XGBoost:
+**4. XGBoost:**
 
-RMSE - 
-MAE 
+RMSE - 3.6
 
-Random Forest:
+MAE 0.55
 
-RMSE - 
-MAE - 
+**5. Random Forest:**
+
+RMSE - 5.29
+
+MAE - 0.71
+
 
 The overall scores obtained for all the models used in the regression task can be seen below:
-![Regression-Evaluation-Results.png](Resources/Regression-Evaluation-Results.png)
-
-**For the classification problem of predicting whether an asteroid is physically hazardous or not using the ‘pha’ column, the following models were used:**
+![Regression Evaluation Results](Resources/Regression-Evaluation-Results.png)
 
 
-Logistic Regression
-XGBoost
-Random Forest
+**Classification task:**
 
-**Logistic Regression:**
+For the classification problem of predicting whether an asteroid is physically hazardous or not using the ‘pha’ column, the following models were used:
+
+
+1. Logistic Regression
+
+2. XGBoost
+
+3. Random Forest
+
+
+Due to the large class imbalance in the dataset, the evaluation measures of Kappa and Balanced Accuracy were used to evaluate the models.
+
+
+**1. Logistic Regression:**
 
 Parameters : family = “binomial”, remaining set as default
 
-<plot of variable importance>
 Kappa Scores - 0.9004
+
 Balanced Accuracy - 0.9637
 
-**XGBoost:**
+**2. XGBoost:**
+
+<center>
+
+![Variable Importance for XGBoost model](Resources/Classification-VarImp-XGBoost.png)
+
+</center>
 
 
-![Classification-VarImp-XGBoost.png](Resources/Classification-VarImp-XGBoost.png)
 
 Kappa Scores - 0.9830
+
 Kappa Scores(with cross validation) - 0.9886
+
 Kappa Score for TuneXGBoost (with cross validation) - 0.9886
+
 Balanced Accuracy - 0.9887
+
 Balanced Accuracy(with cross validation) - 0.9943
+
 Balanced Accuracy for TuneXGBoost (with cross validation) - 0.9943
 
 
 
-**Random Forest:**
+**3. Random Forest:**
 
+<center>
 
+![Variable Importance for Random Forest model](Resources/Classification-VarImp-Random-Forest.png)
 
-<plot of variable importance>
-
-![Classification-VarImp-Random-Forest.png](Resources/Classification-VarImp-Random-Forest.png)
-
-
+</center>
 
 
 
 Kappa Scores - 0.9830
+
 Kappa Scores(with cross validation) - 0.9828
-Kappa Scores for RandomSearch(with cross validation) - 0.9943
+
+Kappa Scores for RandomSearch(with cross validation) - 
+0.9943
+
 Kappa Scores for GridSearch(with cross validation) - 0.9943
 
 
 Balanced Accuracy - 0.9887
+
 Balanced Accuracy(with cross validation) - 0.9942
+
 Balanced Accuracy for RandomSearch(with cross validation) - 0.9943
+
 Balanced Accuracy for GridSearch(with cross validation) - 0.9943
 
 The overall scores obtained for all the models used in the classification task can be seen below:
+<center>
 
-![Classification-Evaluation-Results.png](Resources/Classification-Evaluation-Results.png)
+![Classification Evaluation Results](Resources/Classification-Evaluation-Results.png)
+
+</center>
+
 
 |                           | Sensitivity | Specificity | Pos Pred Value | Neg Pred Value | Prevalence | Detection Rate | Detection Prevalence | Balanced Accuracy |
 |---------------------------|-------------|-------------|----------------|----------------|------------|----------------|----------------------|-------------------|
@@ -207,13 +275,16 @@ The overall scores obtained for all the models used in the classification task c
 
 **Conclusion:**
 
-Amongst all the models tested against the dataset, it was found that for the task of predicting an asteroid’s diameter, an XGBoost model provided the best results with an RMSE score of ____ and an MAE value of ____. For the task of classifying whether an asteroid is physically hazardous or not, the Random Forest classification model with cross validation worked best, providing a Kappa score of ____ and a balanced accuracy of ____. This led to the conclusion that these models work best with astronomical data of the kind tackled in this project. 
+Amongst all the models tested against the dataset, it was found that for the task of predicting an asteroid’s diameter, an XGBoost model provided the best results with an RMSE score of 3.6 and an MAE value of 0.5. The model that came closest to these values was the Random Forest model with an RMSE of 5.29 and an MAE of 0.71. For the task of classifying whether an asteroid is physically hazardous or not, the Random Forest classification model with cross validation worked best, providing a Kappa score of 0.994341 and a balanced accuracy of 0.994382. The model that proved to be second best in terms of performance was the XGBoost model with a Kappa score of 0.9886 and a balanced accuracy of .9943. This led to the conclusion that the XGBoost for regression and the Random Forest for classification models work best with astronomical data of the kind tackled in this project. 
 
-**Some interesting points that led to this conclusion are :**
 
-The variable “moid” seemed to have a very high importance in terms of deciding whether an asteroid is physically hazardous or not. This was confirmed by checking the correlation of “pha” and “moid” in the data itself.
-Fff
-Although the models returned good scores in terms of measures, the heavy class imbalance in the dataset is what led to abnormally high numbers in this case.
+Some interesting points that led to this conclusion are :
+
+1. The variable “moid” seemed to have a very high importance in terms of deciding whether an asteroid is physically hazardous or not. This was confirmed by checking the correlation of “pha” and “moid” in the data itself.
+
+2. Fff
+
+3. Although the models returned good scores in terms of measures, the heavy class imbalance in the dataset is what led to abnormally high numbers in this case.
 
 
 **Future Refinements**

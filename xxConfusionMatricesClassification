@@ -1,0 +1,243 @@
+cm_lm
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     0     1
+         0 54956    10
+         1     8    80
+                                          
+               Accuracy : 0.9997          
+                 95% CI : (0.9995, 0.9998)
+    No Information Rate : 0.9984          
+    P-Value [Acc > NIR] : <2e-16          
+                                          
+                  Kappa : 0.8987          
+                                          
+ Mcnemar's Test P-Value : 0.8137          
+                                          
+            Sensitivity : 0.9999
+            Specificity : 0.8889
+         Pos Pred Value : 0.9998
+         Neg Pred Value : 0.9091
+             Prevalence : 0.9984
+         Detection Rate : 0.9982
+   Detection Prevalence : 0.9984
+      Balanced Accuracy : 0.9444
+                                          
+       'Positive' Class : 0  
+	   
+cm_rf	  
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     0     1
+         0 54965     1
+         1     5    83
+                                     
+               Accuracy : 0.9999     
+                 95% CI : (0.9998, 1)
+    No Information Rate : 0.9985     
+    P-Value [Acc > NIR] : <2e-16     
+                                     
+                  Kappa : 0.9651     
+                                     
+ Mcnemar's Test P-Value : 0.2207     
+                                     
+            Sensitivity : 0.9999
+            Specificity : 0.9881
+         Pos Pred Value : 1.0000
+         Neg Pred Value : 0.9432
+             Prevalence : 0.9985
+         Detection Rate : 0.9984
+   Detection Prevalence : 0.9984
+      Balanced Accuracy : 0.9940
+                                     
+       'Positive' Class : 0 
+	   
+	   
+cm_xgb
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     0     1
+         0 54982     3
+         1     0    70
+                                     
+               Accuracy : 0.9999     
+                 95% CI : (0.9998, 1)
+    No Information Rate : 0.9987     
+    P-Value [Acc > NIR] : <2e-16     
+                                     
+                  Kappa : 0.979      
+                                     
+ Mcnemar's Test P-Value : 0.2482     
+                                     
+            Sensitivity : 1.0000
+            Specificity : 0.9589
+         Pos Pred Value : 0.9999
+         Neg Pred Value : 1.0000
+             Prevalence : 0.9987
+         Detection Rate : 0.9987
+   Detection Prevalence : 0.9987
+      Balanced Accuracy : 0.9795
+                                
+       'Positive' Class : 0 
+	   
+	   
+	   
+cm_defaultXGBModelpha
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     0     1
+         0 54965     1
+         1     2    86
+                                     
+               Accuracy : 0.9999     
+                 95% CI : (0.9998, 1)
+    No Information Rate : 0.9984     
+    P-Value [Acc > NIR] : <2e-16     
+                                     
+                  Kappa : 0.9828     
+                                     
+ Mcnemar's Test P-Value : 1          
+                                     
+            Sensitivity : 1.0000
+            Specificity : 0.9885
+         Pos Pred Value : 1.0000
+         Neg Pred Value : 0.9773
+             Prevalence : 0.9984
+         Detection Rate : 0.9984
+   Detection Prevalence : 0.9984
+      Balanced Accuracy : 0.9942
+                                
+       'Positive' Class : 0    
+
+cm_tuneXGBModelpha
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     0     1
+         0 54966     0
+         1     2    86
+                                     
+               Accuracy : 1          
+                 95% CI : (0.9999, 1)
+    No Information Rate : 0.9984     
+    P-Value [Acc > NIR] : <2e-16     
+                                     
+                  Kappa : 0.9885     
+                                     
+ Mcnemar's Test P-Value : 0.4795     
+                                     
+            Sensitivity : 1.0000
+            Specificity : 1.0000
+         Pos Pred Value : 1.0000
+         Neg Pred Value : 0.9773
+             Prevalence : 0.9984
+         Detection Rate : 0.9984
+   Detection Prevalence : 0.9984
+      Balanced Accuracy : 1.0000
+                                     
+       'Positive' Class : 0 
+
+cm_defaultRFModelpha
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     0     1
+         0 54965     1
+         1     4    84
+                                     
+               Accuracy : 0.9999     
+                 95% CI : (0.9998, 1)
+    No Information Rate : 0.9985     
+    P-Value [Acc > NIR] : <2e-16     
+                                     
+                  Kappa : 0.9711     
+                                     
+ Mcnemar's Test P-Value : 0.3711     
+                                     
+            Sensitivity : 0.9999
+            Specificity : 0.9882
+         Pos Pred Value : 1.0000
+         Neg Pred Value : 0.9545
+             Prevalence : 0.9985
+         Detection Rate : 0.9984
+   Detection Prevalence : 0.9984
+      Balanced Accuracy : 0.9941
+                                
+       'Positive' Class : 0    
+
+
+cm_RandomSearchRFModelpha
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     0     1
+         0 54965     1
+         1     2    86
+                                     
+               Accuracy : 0.9999     
+                 95% CI : (0.9998, 1)
+    No Information Rate : 0.9984     
+    P-Value [Acc > NIR] : <2e-16     
+                                     
+                  Kappa : 0.9828     
+                                     
+ Mcnemar's Test P-Value : 1          
+                                     
+            Sensitivity : 1.0000
+            Specificity : 0.9885
+         Pos Pred Value : 1.0000
+         Neg Pred Value : 0.9773
+             Prevalence : 0.9984
+         Detection Rate : 0.9984
+   Detection Prevalence : 0.9984
+      Balanced Accuracy : 0.9942
+                                     
+       'Positive' Class : 0  
+
+
+cm_GridSearchRFModelpha
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     0     1
+         0 54965     1
+         1     2    86
+                                     
+               Accuracy : 0.9999     
+                 95% CI : (0.9998, 1)
+    No Information Rate : 0.9984     
+    P-Value [Acc > NIR] : <2e-16     
+                                     
+                  Kappa : 0.9828     
+                                     
+ Mcnemar's Test P-Value : 1          
+                                     
+            Sensitivity : 1.0000
+            Specificity : 0.9885
+         Pos Pred Value : 1.0000
+         Neg Pred Value : 0.9773
+             Prevalence : 0.9984
+         Detection Rate : 0.9984
+   Detection Prevalence : 0.9984
+      Balanced Accuracy : 0.9942
+                                     
+       'Positive' Class : 0   	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   

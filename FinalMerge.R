@@ -544,10 +544,10 @@ indices <- sort(sample(nrow(df), nrow(df)*trainSize))
 train <- df[indices, ]
 test <- df[-indices, ]
 # Build X_train, y_train, X_test, y_test for diameter prediction
-# X_train <- subset(train, select = -c(diameter))
-# y_train <- subset(train, select = c(diameter))
-# X_test <- subset(test, select = -c(diameter))
-# y_test <- subset(test, select = c(diameter))
+X_train <- subset(train, select = -c(diameter))
+y_train <- subset(train, select = c(diameter))
+X_test <- subset(test, select = -c(diameter))
+y_test <- subset(test, select = c(diameter))
 
 ####Run Regression Models####
 # lm_errors <- runLinearModel(train, test)
@@ -570,18 +570,18 @@ X_test <- subset(test, select = -c(pha))
 y_test <- subset(test, select = c(pha))
 
 ####Run Classification Models####
-pred_lm=runLogisticModelpha(train, test,X_train, X_test,y_train, y_test)
-cm_lm <- confusionMatrix(factor(y_test$pha),factor(pred_lm))
-pred_rf=runrandomforestModelpha(train, test,X_train, X_test,y_train, y_test)
-cm_rf <- confusionMatrix(factor(y_test$pha),factor(pred_rf))
-cm_xgb <- runXGBoostpha(df,indices)
+# pred_lm=runLogisticModelpha(train, test,X_train, X_test,y_train, y_test)
+# cm_lm <- confusionMatrix(factor(y_test$pha),factor(pred_lm))
+# pred_rf=runrandomforestModelpha(train, test,X_train, X_test,y_train, y_test)
+# cm_rf <- confusionMatrix(factor(y_test$pha),factor(pred_rf))
+# cm_xgb <- runXGBoostpha(df,indices)
 
 ####Run Classification Models with cross validation and Hyper Parameters####
-cm_defaultXGBModelpha=defaultXGBModelpha(X_train, X_test,y_train, y_test)
-cm_tuneXGBModelpha=tuneXGBModelpha(X_train, X_test,y_train, y_test)
-cm_defaultRFModelpha=defaultRFModelpha(X_train, X_test,y_train, y_test)
-cm_RandomSearchRFModelpha=RandomSearchRFModelpha(X_train, X_test,y_train, y_test)
-cm_GridSearchRFModelpha=GridSearchRFModelpha(X_train, X_test,y_train, y_test)
+# cm_defaultXGBModelpha=defaultXGBModelpha(X_train, X_test,y_train, y_test)
+# cm_tuneXGBModelpha=tuneXGBModelpha(X_train, X_test,y_train, y_test)
+# cm_defaultRFModelpha=defaultRFModelpha(X_train, X_test,y_train, y_test)
+# cm_RandomSearchRFModelpha=RandomSearchRFModelpha(X_train, X_test,y_train, y_test)
+# cm_GridSearchRFModelpha=GridSearchRFModelpha(X_train, X_test,y_train, y_test)
 
 # #Export Classification Metrics
 # ExportMetrics(cm_lm,cm_rf,cm_xgb,cm_defaultRFModelpha,cm_RandomSearchRFModelpha,cm_GridSearchRFModelpha,cm_defaultXGBModelpha,cm_tuneXGBModelpha)
