@@ -194,16 +194,16 @@ The overall scores obtained for all the models used in the classification task c
 
 ![Classification-Evaluation-Results.png](Resources/Classification-Evaluation-Results.png)
 
-
-
-|        | Sensitivity | Specificity | Pos Pred Value | Neg Pred Value | Prevalence | Detection Rate | Detection Prevalence | Balanced Accuracy |
-|--------|-------------|-------------|----------------|----------------|------------|----------------|----------------------|-------------------|
-| CM_LM  | 0.9999      | 0.8889      | 0.9998         | 0.9091         | 0.9984     | 0.9982         | 0.9984               | 0.9444            |
-| CM_RF  | 0.9999      | 0.9881      | 1.0000         | 0.9432         | 0.9985     | 0.9984         | 0.9984               | 0.9940            |
-| CM_XGB | 1.0000      | 0.9589      | 0.9999         | 1.0000         | 0.9987     | 0.9987         | 0.9987               | 0.9795            |
-
-
-
+|                           | Sensitivity | Specificity | Pos Pred Value | Neg Pred Value | Prevalence | Detection Rate | Detection Prevalence | Balanced Accuracy |
+|---------------------------|-------------|-------------|----------------|----------------|------------|----------------|----------------------|-------------------|
+| CM_LM                     | 0.9999      | 0.8889      | 0.9998         | 0.9091         | 0.9984     | 0.9982         | 0.9984               | 0.9444            |
+| CM_RF                     | 0.9999      | 0.9881      | 1.0000         | 0.9432         | 0.9985     | 0.9984         | 0.9984               | 0.9940            |
+| CM_XGB                    | 1.0000      | 0.9589      | 0.9999         | 1.0000         | 0.9987     | 0.9987         | 0.9987               | 0.9795            |
+| cm_defaultXGBModelpha     | 1.0000      | 0.9885      | 1.0000         | 0.9773         | 0.9984     | 0.9984         | 0.9984               | 0.9942            |
+| cm_tuneXGBModelpha        | 1.0000      | 1.0000      | 1.0000         | 0.9773         | 0.9984     | 0.9984         | 0.9984               | 1.0000            |
+| cm_defaultRFModelpha      | 0.9999      | 0.9882      | 1.0000         | 0.9545         | 0.9985     | 0.9984         | 0.9984               | 0.9941            |
+| cm_RandomSearchRFModelpha | 1.0000      | 0.9885      | 1.0000         | 0.9773         | 0.9984     | 0.9984         | 0.9984               | 0.9942            |
+| cm_GridSearchRFModelpha   | 1.0000      | 0.9885      | 1.0000         | 0.9773         | 0.9984     | 0.9984         | 0.9984               | 0.9942            |
 
 **Conclusion:**
 
